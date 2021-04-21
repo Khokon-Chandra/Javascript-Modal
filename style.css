@@ -22,7 +22,7 @@ body{
 #modal{
     width: 50%;
     height: auto;
-    padding: 5px;
+    padding: 3px;
     background: dodgerblue;
     animation-name: growIn;
     animation-duration: 0.2s;
@@ -38,5 +38,12 @@ body{
     100%{
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@media(max-width: 769px){
+    #modal{
+        width: 100%;
+        min-width: 320px;
     }
 }
