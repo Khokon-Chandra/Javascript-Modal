@@ -26,6 +26,17 @@ body{
     background: dodgerblue;
     animation-name: growIn;
     animation-duration: 0.2s;
+    position: relative;
+}
+
+#modal .btn-group{
+    position: absolute;
+    display: flex;
+    grid-gap: 10px;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    overflow: hidden;
 }
 
 

@@ -9,7 +9,8 @@ UIController = (function(){
         modalId:"#modal",
         modalBtn:"modal__button",
         cardContainer:".card__Conatiner",
-        modalContainer:".modalContainer"
+        modalContainer:".modalContainer",
+        closeBtn:"close"
     }
 
     let element = ()=>{
@@ -20,7 +21,7 @@ UIController = (function(){
     }
 
     let setModalContainer = (image)=>{
-        document.body.insertAdjacentHTML("beforeend",`<div class="modalContainer"><div id="modal"><div class="fa fa-close">*</div><img src="${image}" width="100%"></div></div>`);
+        document.body.insertAdjacentHTML("beforeend",`<div class="modalContainer"><div id="modal"><img src="${image}" width="100%"></div></div>`);
     }
 
     return {
@@ -33,10 +34,12 @@ UIController = (function(){
             });
         },
 
+
         addModal:function(status,imgDir){            
             setModalContainer(imgDir);
             element().modal.innerHTML = "";
-            element().modal.insertAdjacentHTML("beforeend",`<img src="${imgDir}" width="100%">`);
+            let html = `<img src="${imgDir}" width="100%"><div class="btn-group"><button class="btn btn-success" id="close">Save</button><button class=" btn btn-danger" id="close">Close</button></div>`;
+            element().modal.insertAdjacentHTML("beforeend",html);
             document.querySelector("body").setAttribute("style","overflow:hidden");
         },
 
@@ -87,13 +90,10 @@ const controller = ((UICtrl,img)=>{
             let imageDir = event.target.parentNode.parentNode.childNodes[0].currentSrc;
             UICtrl.addModal("show",imageDir);
         }
-        else if(attributes.class === DomStrings.modalContainer.slice(1,DomStrings.modalContainer.length)){
+        else if(attributes.class === DomStrings.modalContainer.slice(1,DomStrings.modalContainer.length) || attributes.id === DomStrings.closeBtn){
             UICtrl.removeModal();
         }
-
-        if(modalBtn){
-
-        }
+ 
     }
 
     return{
